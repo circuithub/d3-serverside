@@ -2546,7 +2546,10 @@ d3.mouse = function(container) {
 };
 
 // https://bugs.webkit.org/show_bug.cgi?id=44083
-var d3_mouse_bug44083 = /WebKit/.test(navigator.userAgent) ? -1 : 0;
+var d3_mouse_bug44083 = 0;
+if (typeof(navigator) != "undefined") {
+  d3_mouse_bug44083 = /WebKit/.test(navigator.userAgent) ? -1 : 0;
+}
 
 function d3_mousePoint(container, e) {
   var svg = container.ownerSVGElement || container;
